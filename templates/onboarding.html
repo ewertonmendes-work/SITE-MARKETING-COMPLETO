@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding Marketing — PRONIX</title>
+    <meta name="description" content="Guia de Onboarding do Time de Marketing da PRONIX - Vendas Online na Prática.">
+
+    <!-- Fontes Google: Barlow Condensed (Substituto Roc Grotesk) e Inter (Leitura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- BRANDING PRONIX --- */
+        :root {
+            --pronix-black: #111111;
+            --pronix-yellow: #FFD100;
+            --pronix-purple: #6D28D9;
+            --pronix-white: #FFFFFF;
+            --pronix-gray: #F4F4F5;
+
+            --sidebar-width: 280px;
+
+            /* Tipografia Identity Match */
+            --font-display: 'Barlow Condensed', sans-serif;
+            /* Títulos, Menus, Cards */
+            --font-body: 'Inter', sans-serif;
+            /* Textos longos */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--pronix-white);
+            color: var(--pronix-black);
+            line-height: 1.6;
+            font-size: 16px;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- TIPOGRAFIA DE MARCA --- */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--pronix-black);
+            font-family: var(--font-display);
+            /* Forçando fonte da marca em todos os títulos */
+            text-transform: uppercase;
+            font-weight: 800;
+            /* Peso Bold/Black característico */
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            line-height: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(120deg, transparent 0%, var(--pronix-yellow) 0%);
+            background-size: 100% 30%;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            padding-right: 10px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--pronix-purple);
+            margin-top: 1.5rem;
+        }
+
+        p,
+        li {
+            margin-bottom: 1rem;
+            color: #333;
+            font-family: var(--font-body);
+            /* Garante leitura confortável */
+        }
+
+        /* --- LISTAS COM RAIO PRONIX (IMAGEM OFICIAL) --- */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 32px;
+            /* Espaço ajustado para o raio */
+            margin-bottom: 0.8rem;
+        }
+
+        ul li::before {
+            content: '';
+            /* IMAGEM: RAIO PEQUENO OFICIAL */
+            background-image: url('https://vdvgroup.com.br/wp-content/uploads/2026/02/RAIO-PEQUENO.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        ol {
+            padding-left: 1.5rem;
+        }
+
+        strong {
+            color: var(--pronix-black);
+            font-weight: 700;
+            background-color: rgba(255, 209, 0, 0.3);
+            padding: 0 4px;
+        }
+
+        /* Ícone de Raio para Títulos (IMAGEM OFICIAL) */
+        .icon-bolt {
+            height: 1.2em;
+            width: 0.8em;
+            vertical-align: middle;
+            margin-left: 8px;
+            display: inline-block;
+            content: url('https://vdvgroup.com.br/wp-content/uploads/2026/02/RAIO-PEQUENO.png');
+        }
+
+        /* --- BARRA DE PROGRESSO --- */
+        #progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: var(--pronix-yellow);
+            width: 0%;
+            transition: width 0.1s;
+            box-shadow: 0 0 10px var(--pronix-yellow);
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--pronix-black);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 1.5rem;
+            z-index: 900;
+            border-right: 4px solid var(--pronix-yellow);
+            transition: transform 0.3s ease;
+        }
+
+        .brand-container {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        /* IMAGEM: LOGO LATERAL OFICIAL */
+        .sidebar-logo {
+            width: 100%;
+            max-width: 190px;
+            height: auto;
+            display: block;
+            margin-bottom: 0px;
+        }
+
+        .tagline-nav {
+            font-size: 0.75rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            font-family: var(--font-body);
+            border-top: 1px solid #333;
+            padding-top: 10px;
+            width: 100%;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-menu li::before {
+            content: none;
+        }
+
+        .nav-link {
+            display: block;
+            color: #999;
+            text-decoration: none;
+            padding: 0.6rem 0;
+            font-size: 1.1rem;
+            /* Aumentado um pouco para a fonte condensada */
+            font-family: var(--font-display);
+            /* Menu com a fonte da marca */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+            border-bottom: 1px solid #222;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--pronix-yellow);
+            padding-left: 5px;
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        .main-content {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+            background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            scroll-margin-top: 2rem;
+        }
+
+        /* --- COMPONENTES VISUAIS --- */
+
+        /* Hero Section (CAPA) */
+        #capa {
+            background: var(--pronix-black);
+            color: white;
+            padding: 2rem 1rem 3rem 1rem;
+            border-radius: 0;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 4rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* IMAGEM: LOGO CAPA OFICIAL (ONBOARDING-MARKETING) */
+        .cover-logo {
+            width: 100%;
+            max-width: 600px;
+            /* Tamanho proporcional */
+            height: auto;
+            margin-bottom: 0.5rem;
+        }
+
+        #capa h3 {
+            color: var(--pronix-yellow);
+            margin-top: -10px;
+            font-size: 3.5rem;
+            line-height: 1;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: var(--font-display);
+            font-weight: 800;
+        }
+
+        /* Cards de Resumo */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .summary-card {
+            background: var(--pronix-yellow);
+            padding: 1.5rem;
+            color: var(--pronix-black);
+            transform: rotate(-1deg);
+            transition: transform 0.3s;
+            border: 2px solid var(--pronix-black);
+            box-shadow: 4px 4px 0px var(--pronix-black);
+        }
+
+        .summary-card:nth-child(2) {
+            transform: rotate(1deg);
+            background: white;
+        }
+
+        .summary-card:nth-child(3) {
+            transform: rotate(-2deg);
+            background: var(--pronix-black);
+            color: white;
+        }
+
+        .summary-card:nth-child(3) h4 {
+            color: var(--pronix-yellow);
+        }
+
+        .summary-card:nth-child(3) p {
+            color: #ddd;
+        }
+
+        .summary-card:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .summary-card h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--pronix-black);
+            padding-bottom: 5px;
+        }
+
+        .summary-card p {
+            font-weight: 600;
+            font-size: 0.95rem;
+            font-family: var(--font-body);
+        }
+
+        /* Lista de Princípios */
+        .principles-list li {
+            background: white;
+            padding: 1.5rem 1.5rem 1.5rem 4rem;
+            /* Espaço para o raio */
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-left: 6px solid var(--pronix-black);
+            transition: all 0.2s;
+        }
+
+        .principles-list li::before {
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 28px;
+            height: 28px;
+        }
+
+        .principles-list li:hover {
+            border-left-color: var(--pronix-yellow);
+            transform: translateX(5px);
+        }
+
+        .principle-title {
+            display: block;
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--pronix-black);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- ECOSSISTEMA DE PRODUTOS --- */
+        .funnel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .funnel-card {
+            background: white;
+            border: 2px solid #ddd;
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top-width: 8px;
+        }
+
+        .funnel-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Temas dos Produtos */
+        .funnel-card.performance {
+            border-color: var(--pronix-yellow);
+            background: #fff;
+        }
+
+        .funnel-card.performance:hover {
+            box-shadow: 8px 8px 0px var(--pronix-yellow);
+        }
+
+        .funnel-card.performance .funnel-header {
+            border-bottom: 2px solid var(--pronix-yellow);
+        }
+
+        .funnel-card.performance .funnel-tag {
+            background: var(--pronix-yellow);
+            color: var(--pronix-black);
+        }
+
+        .funnel-card.pap {
+            border-color: var(--pronix-purple);
+            background: #fff;
+        }
+
+        .funnel-card.pap:hover {
+            box-shadow: 8px 8px 0px var(--pronix-purple);
+        }
+
+        .funnel-card.pap .funnel-header {
+            border-bottom: 2px solid var(--pronix-purple);
+        }
+
+        .funnel-card.pap .funnel-tag {
+            background: var(--pronix-purple);
+            color: white;
+        }
+
+        .funnel-card.pap .funnel-title,
+        .funnel-card.pap .funnel-price {
+            color: var(--pronix-purple);
+        }
+
+        .funnel-card.club {
+            border-color: var(--pronix-black);
+            background: #fff;
+            color: var(--pronix-black);
+        }
+
+        .funnel-card.club:hover {
+            box-shadow: 8px 8px 0px var(--pronix-black);
+        }
+
+        .funnel-card.club .funnel-header {
+            border-bottom: 2px solid var(--pronix-black);
+        }
+
+        .funnel-card.club .funnel-tag {
+            background: var(--pronix-black);
+            color: var(--pronix-yellow);
+        }
+
+        .funnel-card.club .funnel-title {
+            color: var(--pronix-black);
+        }
+
+        .funnel-card.club .funnel-price {
+            color: var(--pronix-black);
+        }
+
+        .funnel-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .funnel-tag {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .funnel-desc {
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .funnel-desc strong {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .funnel-price {
+            margin-top: 1.5rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        /* --- VISUAL FLOW (FUNIL REAL) --- */
+        .visual-funnel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .visual-funnel-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: #eee;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .funnel-step-box {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.2s;
+            padding: 1.5rem;
+            border: 2px solid var(--pronix-black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .funnel-step-box:hover {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        .funnel-step-box h4 {
+            margin: 0;
+            font-size: 1.4rem;
+            line-height: 1.1;
+        }
+
+        .funnel-step-box p {
+            font-family: var(--font-body);
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            line-height: 1;
+        }
+
+        /* Larguras do Funil */
+        .funnel-step-box.step-ads {
+            width: 100%;
+            max-width: 800px;
+            background: var(--pronix-black);
+            color: white;
+            border-bottom: 4px solid var(--pronix-yellow);
+        }
+
+        .funnel-step-box.step-ads h4 {
+            color: var(--pronix-yellow);
+        }
+
+        .funnel-step-box.step-ads p {
+            color: #ccc;
+        }
+
+        .funnel-step-box.step-lp {
+            width: 80%;
+            max-width: 600px;
+            background: white;
+            color: var(--pronix-black);
+            margin-top: 1rem;
+        }
+
+        .funnel-split-row {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            width: 65%;
+            max-width: 480px;
+            margin: 1rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .funnel-mini-card {
+            background: white;
+            border: 2px solid var(--pronix-black);
+            padding: 1rem;
+            font-family: var(--font-display);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1rem;
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .funnel-or {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 800;
+            background: var(--pronix-yellow);
+            padding: 6px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            border: 2px solid var(--pronix-black);
+            z-index: 3;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+        }
+
+        .funnel-step-box.step-sdr {
+            width: 50%;
+            max-width: 350px;
+            background: var(--pronix-yellow);
+            color: var(--pronix-black);
+            margin-top: 0;
+        }
+
+        .funnel-step-box.step-meeting {
+            width: 35%;
+            max-width: 250px;
+            background: var(--pronix-black);
+            border: 2px solid var(--pronix-black);
+            color: white;
+            margin-top: 1rem;
+            box-shadow: 0 0 0 4px rgba(255, 209, 0, 0.5);
+        }
+
+        .funnel-step-box.step-meeting h4 {
+            color: var(--pronix-yellow);
+        }
+
+        .funnel-connector {
+            color: var(--pronix-black);
+            font-size: 1.5rem;
+            opacity: 0.5;
+            margin: 2px 0;
+            line-height: 1;
+        }
+
+        .methodology-note {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: #fff;
+            border-left: 6px solid var(--pronix-purple);
+            font-size: 0.95rem;
+            color: #333;
+            border: 1px solid #eee;
+            border-left-width: 6px;
+            font-family: var(--font-body);
+        }
+
+        /* --- SQUAD LAYOUT --- */
+        .organogram-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .org-level {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .squad-split {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            width: 100%;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .squad-split::before {
+            content: '';
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 2rem;
+            background: var(--pronix-black);
+        }
+
+        .squad-split::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background: var(--pronix-black);
+            z-index: 0;
+        }
+
+        .squad-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .squad-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 1.5rem;
+            background: var(--pronix-black);
+        }
+
+        .squad-title {
+            margin-top: 1.5rem;
+            background: var(--pronix-black);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            transform: rotate(-2deg);
+        }
+
+        .squad-column:last-child .squad-title {
+            transform: rotate(2deg);
+        }
+
+        .role-card {
+            background: var(--pronix-yellow);
+            color: var(--pronix-black);
+            border: 2px solid var(--pronix-black);
+            padding: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-family: var(--font-display);
+            letter-spacing: 0.05em;
+            text-align: center;
+            width: 100%;
+            max-width: 250px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.2s;
+            box-shadow: 4px 4px 0px var(--pronix-black);
+            font-size: 1.1rem;
+        }
+
+        .role-card:hover {
+            transform: scale(1.02);
+        }
+
+        .role-card.leader {
+            font-size: 1.5rem;
+            padding: 1.2rem 3rem;
+        }
+
+        .role-name {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 5px;
+            color: #333;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        /* KPIs */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .kpi-card {
+            background: #f0f0f0;
+            padding: 1.5rem 0.5rem;
+            text-align: center;
+            font-weight: 700;
+            color: var(--pronix-black);
+            border-bottom: 4px solid var(--pronix-yellow);
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        /* Checklists */
+        .checklist-container {
+            background: var(--pronix-black);
+            color: white;
+            padding: 2rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .checklist-container h3 {
+            color: var(--pronix-yellow);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: white;
+            font-weight: 500;
+            font-family: var(--font-body);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--pronix-yellow);
+            cursor: pointer;
+        }
+
+        /* Botões Flutuantes */
+        .fab-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .btn-fab {
+            background: var(--pronix-yellow);
+            color: var(--pronix-black);
+            border: 2px solid var(--pronix-black);
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--pronix-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .btn-fab:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--pronix-black);
+        }
+
+        /* Mobile Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1001;
+            background: var(--pronix-yellow);
+            color: var(--pronix-black);
+            border: 2px solid black;
+            padding: 0.5rem 1rem;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 black;
+        }
+
+        /* Banner de Encerramento */
+        #encerramento {
+            background: var(--pronix-purple);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #encerramento h2 {
+            color: var(--pronix-yellow);
+        }
+
+        #encerramento p {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* --- RESPONSIVIDADE (4K - 4000px) --- */
+        @media (max-width: 4000px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 280px;
+                height: 100vh;
+                padding-top: 2rem;
+                box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+                z-index: 1002;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 6rem 5%;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .summary-card {
+                transform: rotate(0deg) !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 85%;
+            }
+        }
+
+        /* --- IMPRESSÃO (PDF) --- */
+        @media print {
+
+            .sidebar,
+            .mobile-toggle,
+            .fab-container,
+            #progress-container {
+                display: none !important;
+            }
+
+            .main-content {
+                margin: 0;
+                width: 100%;
+                padding: 0;
+                background: white;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            #capa,
+            #encerramento,
+            .checklist-container {
+                background: white;
+                color: black;
+                border: 2px solid black;
+                clip-path: none;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            p,
+            li {
+                color: black !important;
+            }
+
+            .summary-card {
+                background: white !important;
+                color: black !important;
+                transform: none !important;
+                border: 1px solid black;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <button class="mobile-toggle" onclick="toggleMenu()">☰ Menu</button>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand-container">
+            <!-- LOGO LATERAL OFICIAL -->
+            <img src="https://vdvgroup.com.br/wp-content/uploads/2026/02/texto_branco_tag_padrao.png"
+                alt="PRONIX Marketing" class="sidebar-logo">
+        </div>
+
+        <div class="tagline-nav">Vendas Online na Prática</div>
+
+        <ul class="nav-menu">
+            <li><a href="#capa" class="nav-link" onclick="toggleMenu()">Start <div class="icon-bolt"></div></a></li>
+            <li><a href="#objetivo" class="nav-link" onclick="toggleMenu()">Objetivo</a></li>
+            <li><a href="#papel" class="nav-link" onclick="toggleMenu()">Papel na PRONIX</a></li>
+            <li><a href="#mvv" class="nav-link" onclick="toggleMenu()">Missão & DNA</a></li>
+            <li><a href="#principios" class="nav-link" onclick="toggleMenu()">12 Princípios</a></li>
+            <li><a href="#funil-produtos" class="nav-link" onclick="toggleMenu()">Nossos Produtos 📦</a></li>
+            <li><a href="#funil-leads" class="nav-link" onclick="toggleMenu()">Funil de Leads <div class="icon-bolt">
+                    </div></a></li>
+            <li><a href="#organograma" class="nav-link" onclick="toggleMenu()">O Time</a></li>
+            <li><a href="#demandas" class="nav-link" onclick="toggleMenu()">Gestão Ágil</a></li>
+            <li><a href="#kpis" class="nav-link" onclick="toggleMenu()">KPIs</a></li>
+            <li><a href="#ferramentas" class="nav-link" onclick="toggleMenu()">Stack</a></li>
+            <li><a href="#cultura" class="nav-link" onclick="toggleMenu()">Cultura</a></li>
+            <li><a href="#checklists" class="nav-link" onclick="toggleMenu()">Checklists</a></li>
+            <li><a href="index.html" class="nav-link" onclick="toggleMenu()"
+                    style="color:var(--pronix-yellow); margin-top:20px;">← Voltar ao Hub Principal</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h4>Cultura</h4>
+                <p>Performance, dados e transparência total.</p>
+            </div>
+            <div class="summary-card">
+                <h4>Operação</h4>
+                <p>Processos no ClickUp com inteligência e método.</p>
+            </div>
+            <div class="summary-card">
+                <h4>Performance</h4>
+                <p>Vendas e Marketing são um único pulmão.</p>
+            </div>
+        </div>
+
+        <section id="capa">
+            <!-- IMAGEM CAPA OFICIAL (ONBOARDING-MARKETING) -->
+            <img src="https://vdvgroup.com.br/wp-content/uploads/2026/02/ONBOARDING-MARKETING.png"
+                alt="PRONIX MARKETING" class="cover-logo">
+
+            <h3>ONBOARDING & CULTURA</h3>
+        </section>
+
+        <section id="objetivo">
+            <h2>Objetivo do Game</h2>
+            <p>Esse guia é para acelerar sua entrada no campo. Aqui a gente joga rápido.</p>
+            <p>Você vai entender como a PRONIX pensa, como a gente decide e como você pode somar pontos para o time
+                desde o dia 1.</p>
+            <p><strong>Nosso foco:</strong> Clareza sobre seu papel e alinhamento total de expectativas.</p>
+        </section>
+
+        <section id="papel">
+            <h2>Marketing = Vendas</h2>
+            <p>Aqui na PRONIX, Marketing não é "departamento de artes". É motor de crescimento.</p>
+            <p>Não trabalhamos isolados. Geramos demanda qualificada, fortalecemos a marca e preparamos o gol para o
+                time comercial chutar.</p>
+            <p>Resultado só acontece com integração. Se Vendas não vende, o Marketing falhou também.</p>
+        </section>
+
+        <section id="mvv">
+            <h2>DNA PRONIX</h2>
+            <p><strong>Missão:</strong> "Transformar a vida das pessoas através das vendas online."</p>
+            <p><strong>Visão:</strong> "Ser o maior ecossistema de soluções para o vendedor online do Brasil."</p>
+
+            <div
+                style="background: var(--pronix-gray); padding: 1.5rem; border-left: 4px solid var(--pronix-purple); margin: 1.5rem 0;">
+                <h4 style="margin:0; font-size:1.2rem; color:var(--pronix-purple);">VALORES INEGOCIÁVEIS</h4>
+                <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;">
+                    <span
+                        style="background:white; padding:5px 10px; font-weight:bold; border:1px solid #ddd; font-family:var(--font-display);">Meritocracia</span>
+                    <span
+                        style="background:white; padding:5px 10px; font-weight:bold; border:1px solid #ddd; font-family:var(--font-display);">DNA
+                        de Crescimento</span>
+                    <span
+                        style="background:white; padding:5px 10px; font-weight:bold; border:1px solid #ddd; font-family:var(--font-display);">Sucesso
+                        do Cliente</span>
+                    <span
+                        style="background:white; padding:5px 10px; font-weight:bold; border:1px solid #ddd; font-family:var(--font-display);">Família
+                        & Bem-estar</span>
+                </div>
+            </div>
+            <p style="font-style: italic;">"Cultura é a base. Técnica a gente treina."</p>
+        </section>
+
+        <section id="principios">
+            <h2>OS 12 PRINCÍPIOS DA PRONIX</h2>
+            <ul class="principles-list">
+                <li><span class="principle-title">1. Visão é a base para toda decisão</span> Nossas decisões não são
+                    tomadas para apagar incêndio, são pensadas no longo prazo.</li>
+                <li><span class="principle-title">2. Temos coração ensinável e humildade intelectual</span> Sempre dá
+                    pra melhorar, visões externas são muito bem-vindas e, se tem gente fazendo melhor que nós, queremos
+                    aprender.</li>
+                <li><span class="principle-title">3. Valorizamos cultura acima da técnica</span> Cultura é a nossa base.
+                    A pessoa mais técnica sem cultura não sobreviverá aqui, mas a pessoa aculturada poderá se
+                    desenvolver.</li>
+                <li><span class="principle-title">4. Autorresponsabilidade e Autogerenciamento</span> Nunca terceirize a
+                    culpa. Assuma para si a responsabilidade e resolva.</li>
+                <li><span class="principle-title">5. Crescemos junto com os nossos clientes</span> O sucesso do nosso
+                    cliente é o nosso sucesso. Se eles não crescem, nós também não crescemos. Colocar o cliente no
+                    centro é nosso papel.</li>
+                <li><span class="principle-title">6. Transparência, Honestidade e Lealdade</span> Dizer o que precisa
+                    ser dito independente de um bom ou mau momento. Não aceitamos conversinha de corredor e fofoca.</li>
+                <li><span class="principle-title">7. Trabalhamos por resultado e não por horário</span> Não tem dia ou
+                    horário que vai nos impedir de atingir o resultado. Quem deixa um resultado por entregar porque deu
+                    o horário, não deve estar entre nós.</li>
+                <li><span class="principle-title">8. Rigor com os recursos da empresa</span> Cuidamos no detalhe dos
+                    recursos da empresa. Empresa mais lucrativa, tem possibilidade de entregar mais para os seus.</li>
+                <li><span class="principle-title">9. Lideramos pelo exemplo</span> Só o exemplo arrasta. Agimos como
+                    nossos liderados devem agir.</li>
+                <li><span class="principle-title">10. Incentivamos a mudança rápida à medida em que ela seja
+                        necessária</span> Se tem necessidade de mudança, aprendemos rápido e corrigimos rápido. Zero
+                    burocracia.</li>
+                <li><span class="principle-title">11. Tomamos decisões baseadas em fatos e dados</span> Sem números e/ou
+                    fatos, a conversa nem começa. Nada de achismos por aqui.</li>
+                <li><span class="principle-title">12. Pessoas vêm antes de processos, mas processos sustentam
+                        pessoas</span> Valorizamos as pessoas, mas cuidamos ainda mais dos processos/sistemas que
+                    cuidarão para as pessoas performarem muito mais.</li>
+            </ul>
+        </section>
+
+        <section id="proposito">
+            <h2>Propósito do Marketing</h2>
+            <p>Gerar <strong>Crescimento Previsível</strong>.</p>
+            <p>Receita, Leads Qualificados (MQLs) e Brand Equity. O resto é vaidade.</p>
+        </section>
+
+        <!-- ECOSSISTEMA DE PRODUTOS (NOMES ATUALIZADOS) -->
+        <section id="funil-produtos">
+            <h2>Nosso Ecossistema de Produtos 📦</h2>
+            <p>Não vendemos apenas cursos. Vendemos <strong>níveis de jogo</strong>. Nossa esteira de produtos acompanha
+                a jornada de amadurecimento do vendedor.</p>
+            <div class="funnel-grid">
+                <!-- Produto 1: PERFORMANCE (AMARELO) -->
+                <div class="funnel-card performance">
+                    <div class="funnel-header"><span class="funnel-tag">Entrada / Escala</span>
+                        <h3 class="funnel-title">PERFORMANCE</h3>
+                    </div>
+                    <div class="funnel-desc">
+                        <p style="font-weight:bold;">⏱ Período: 12 meses</p><strong>Entrega Individual:</strong>
+                        <ul>
+                            <li>1 reunião inicial com especialista (Diagnóstico + Estratégia).</li>
+                            <li>+1 reunião de aceleração estratégica (acionável conforme necessidade).</li>
+                        </ul><strong>Entrega em Grupo:</strong>
+                        <ul>
+                            <li>Plantões Quinzenais com time de especialistas.</li>
+                        </ul>
+                    </div>
+                    <div class="funnel-price">
+                        <div class="icon-bolt"></div> Produto de Volume
+                    </div>
+                </div>
+                <!-- Produto 2: PAP (ROXO) -->
+                <div class="funnel-card pap">
+                    <div class="funnel-header"><span class="funnel-tag">Aceleração</span>
+                        <h3 class="funnel-title">PROGRAMA DE ACELERAÇÃO (PAP)</h3>
+                    </div>
+                    <div class="funnel-desc">
+                        <p style="font-weight:bold;">⏱ Período: 12 meses</p><strong>Entrega Individual:</strong>
+                        <ul>
+                            <li>1 reunião individual por mês.</li>
+                        </ul><strong>Entrega em Grupo:</strong>
+                        <ul>
+                            <li>Hotseat com Mentor ou Convidados.</li>
+                        </ul>
+                    </div>
+                    <div class="funnel-price">💎 Ticket Médio</div>
+                </div>
+                <!-- Produto 3: CLUB (PRETO - Estilo Atualizado) -->
+                <div class="funnel-card club">
+                    <div class="funnel-header"><span class="funnel-tag">High Ticket</span>
+                        <h3 class="funnel-title">CLUB</h3>
+                    </div>
+                    <div class="funnel-desc">
+                        <p style="font-weight:bold;">⏱ Período: 12 meses</p><strong>Entrega Individual:</strong>
+                        <ul>
+                            <li>1 reunião individual por mês durante Sprint.</li>
+                        </ul><strong>Entrega em Grupo:</strong>
+                        <ul>
+                            <li>Hotseat com Mentor e membros Club.</li>
+                        </ul>
+                    </div>
+                    <div class="funnel-price">🏆 Elite</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOVO SLIDE: FUNIL DE GERAÇÃO DE OPORTUNIDADES -->
+        <section id="funil-leads">
+            <h2>Funil de Geração de Oportunidades <div class="icon-bolt"></div>
+            </h2>
+            <p>Nosso principal modelo de aquisição funciona por meio de campanhas de tráfego pago. Esse funil é hoje o
+                principal mecanismo de geração de oportunidades da empresa e funciona como um dos seus principais
+                “pulmões”, mantendo um fluxo constante de potenciais clientes para o time comercial.</p>
+            <div class="visual-funnel-container">
+                <div class="funnel-step-box step-ads">
+                    <div class="step-icon">📢</div>
+                    <h4>TRÁFEGO PAGO</h4>
+                    <p>Anúncios com criativos estratégicos para público qualificado.</p>
+                </div>
+                <div class="funnel-connector">⬇</div>
+                <div class="funnel-step-box step-lp">
+                    <div class="step-icon">💻</div>
+                    <h4>LANDING PAGE (LP)</h4>
+                    <p>Visitante preenche formulário para validarmos o perfil.</p>
+                </div>
+                <div class="funnel-connector">⬇</div>
+                <div class="funnel-split-row">
+                    <div class="funnel-mini-card"><span
+                            style="display:block; font-size:1.2rem; margin-bottom:5px;">📅</span>Agendamento<br>Calendly
+                    </div>
+                    <div class="funnel-or">OU</div>
+                    <div class="funnel-mini-card"><span
+                            style="display:block; font-size:1.2rem; margin-bottom:5px;">💬</span>Contato<br>WhatsApp
+                        (SDR)</div>
+                </div>
+                <div class="funnel-connector">⬇</div>
+                <div class="funnel-step-box step-sdr">
+                    <div class="step-icon">🕵️</div>
+                    <h4>SDR (Validação)</h4>
+                    <p>Conversa inicial para qualificar o lead.</p>
+                </div>
+                <div class="funnel-connector">⬇</div>
+                <div class="funnel-step-box step-meeting">
+                    <div class="step-icon">🚀</div>
+                    <h4>REUNIÃO COMERCIAL</h4>
+                    <p style="color:#ddd; font-size:0.8rem; margin-top:5px;">Fechamento</p>
+                </div>
+            </div>
+            <div class="methodology-note">
+                <strong>Nota Importante:</strong> Seguimos a metodologia desenvolvida pelo Natan, que orienta a
+                estrutura desse processo. Por se tratar de um modelo estratégico validado, não realizamos alterações
+                relevantes sem alinhamento prévio com a consultoria, garantindo consistência, previsibilidade e
+                continuidade dos resultados.
+            </div>
+        </section>
+
+        <section id="organograma">
+            <h2>Quem Faz Acontecer <div class="icon-bolt"></div>
+            </h2>
+            <div class="organogram-tree">
+                <div class="org-level">
+                    <div class="role-card leader">LÍDER<span class="role-name">EWERTON</span></div>
+                </div>
+                <div class="squad-split">
+                    <div class="squad-column">
+                        <div class="squad-title">Performance 🚀</div>
+                        <div class="role-card strategist">ESTRATEGISTA<span class="role-name">EDERSON</span></div>
+                        <div class="role-card specialist">GESTOR DE TRÁFEGO<span class="role-name">JULIANA</span></div>
+                        <div class="role-card specialist">COPYWRITER<span class="role-name">RENATA</span></div>
+                        <div class="role-card specialist">WEBDESIGNER<span class="role-name">THAIS</span></div>
+                    </div>
+                    <div class="squad-column">
+                        <div class="squad-title">Conteúdo & Visual 🎨</div>
+                        <div class="role-card specialist">SOCIAL MEDIA<span class="role-name">AMANDA</span></div>
+                        <div class="role-card specialist">VIDEOMAKER<span class="role-name">LEANDRO</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOVO: PROCESSOS ESPECÍFICOS CLICÁVEIS -->
+        <section id="processos-especificos">
+            <h2>Processos por Área <div class="icon-bolt"></div>
+            </h2>
+            <p>Acesse os manuais detalhados e rotinas de cada área do nosso esquadrão.</p>
+            <div class="summary-grid" style="margin-top: 2rem;">
+                <a href="processo-copywriter.html" style="text-decoration:none;">
+                    <div class="summary-card" style="transform: rotate(0deg); cursor: pointer;">
+                        <h4 style="font-size: 1.4rem;"><span
+                                style="font-size:1.2rem; display:block; margin-bottom:5px;">✍️</span> Copywriter</h4>
+                        <p>Rotina, VSLs e E-mails.</p>
+                    </div>
+                </a>
+                <a href="processo-videomaker.html" style="text-decoration:none;">
+                    <div class="summary-card" style="transform: rotate(0deg); cursor: pointer; background: white;">
+                        <h4 style="font-size: 1.4rem;"><span
+                                style="font-size:1.2rem; display:block; margin-bottom:5px;">🎥</span> Videomaker</h4>
+                        <p>Edição, Captação e Criativos.</p>
+                    </div>
+                </a>
+                <a href="processo-socialmedia.html" style="text-decoration:none;">
+                    <div class="summary-card"
+                        style="transform: rotate(0deg); cursor: pointer; background: var(--pronix-black); color: white;">
+                        <h4 style="font-size: 1.4rem; color: var(--pronix-yellow);"><span
+                                style="font-size:1.2rem; display:block; margin-bottom:5px;">📱</span> Social Media</h4>
+                        <p style="color: #ddd;">Stories, Feed e Engajamento.</p>
+                    </div>
+                </a>
+                <a href="processo-webdesigner.html" style="text-decoration:none;">
+                    <div class="summary-card" style="transform: rotate(0deg); cursor: pointer; background: #eee;">
+                        <h4 style="font-size: 1.4rem;"><span
+                                style="font-size:1.2rem; display:block; margin-bottom:5px;">🎨</span> Webdesigner</h4>
+                        <p>LPs, Identidade e Banners.</p>
+                    </div>
+                </a>
+                <a href="processo-trafego.html" style="text-decoration:none;">
+                    <div class="summary-card" style="transform: rotate(0deg); cursor: pointer;">
+                        <h4 style="font-size: 1.4rem;"><span
+                                style="font-size:1.2rem; display:block; margin-bottom:5px;">🎯</span> Tráfego Pago</h4>
+                        <p>Gestão, ROI e Escala.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="demandas">
+            <h2>Fluxo de Trabalho <div class="icon-bolt"></div>
+            </h2>
+            <h3>Entrada de Demandas</h3>
+            <p>Tudo passa pela estratégia. Pedidos aleatórios de outras áreas são filtrados para garantir foco no que
+                traz ROI.</p>
+            <h3>ClickUp é Lei</h3>
+            <p>Se não está no ClickUp, não existe. Priorizamos lá, acompanhamos lá.</p>
+            <h3>Ritmo Semanal</h3>
+            <p>Sprints semanais. Planejamos, executamos, medimos, ajustamos.</p>
+        </section>
+
+        <section id="kpis">
+            <h2>O Placar (KPIs)</h2>
+            <p>Como sabemos se estamos ganhando o jogo?</p>
+            <div class="kpi-grid">
+                <div class="kpi-card">CAC</div>
+                <div class="kpi-card">ROAS</div>
+                <div class="kpi-card">Leads</div>
+                <div class="kpi-card">Taxa Conv.</div>
+                <div class="kpi-card">MQLs</div>
+                <div class="kpi-card">Custo/MQL</div>
+                <div class="kpi-card">LTV/CAC</div>
+                <div class="kpi-card">Seguidores</div>
+            </div>
+        </section>
+
+        <section id="ferramentas">
+            <h2>Nossa Stack</h2>
+            <ul>
+                <li><strong>ClickUp:</strong> O cérebro da operação.</li>
+                <li><strong>Canva & Photoshop:</strong> Visual.</li>
+                <li><strong>CapCut & DaVinci:</strong> Movimento.</li>
+                <li><strong>MLabs:</strong> Social Data.</li>
+                <li><strong>Dashboards:</strong> A verdade nua e crua.</li>
+            </ul>
+        </section>
+
+        <section id="cultura">
+            <h2>Cultura de Execução</h2>
+            <h3>Como a gente faz?</h3>
+            <p>Sem estratégia, a gente nem começa. Mas quando começa, é <strong>velocidade</strong> e
+                <strong>qualidade</strong>.</p>
+            <h3>O que esperamos de você?</h3>
+            <ul>
+                <li>Agilidade (o mercado não espera).</li>
+                <li>Autonomia (você é dono da sua cadeira).</li>
+                <li>Inovação (traga ideias novas!).</li>
+                <li>Fome de Resultado.</li>
+            </ul>
+        </section>
+
+        <section id="checklists">
+            <h2>Seus Primeiros Passos</h2>
+            <div class="checklist-container">
+                <h3>Dia 1: O Setup 🚀</h3>
+                <label class="checklist-item"><input type="checkbox"> Acessar ClickUp e Drive</label>
+                <label class="checklist-item"><input type="checkbox"> Configurar ferramentas</label>
+                <label class="checklist-item"><input type="checkbox"> Ler este guia até o fim</label>
+            </div>
+        </section>
+
+        <section id="encerramento">
+            <h2>BEM-VINDO À PRONIX.</h2>
+            <p>Estamos felizes demais em ter você no time. Agora, bora pra cima fazer história!</p>
+            <div style="margin-top:2rem; font-size:3rem;">
+                <div class="icon-bolt" style="width: 1em; height: 1em; transform: scale(2);"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="fab-container">
+        <button class="btn-fab" onclick="window.scrollTo(0,0)" title="Voltar ao Topo">↑</button>
+        <button class="btn-fab" onclick="window.print()" title="Salvar PDF">🖨</button>
+    </div>
+
+    <script>
+        // Progress Bar (Raio)
+        window.onscroll = function () {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+
+            // Highlight Menu
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('.nav-link');
+
+            sections.forEach(sec => {
+                let top = sec.offsetTop - 150;
+                let bottom = top + sec.offsetHeight;
+                let id = sec.getAttribute('id');
+
+                if (winScroll >= top && winScroll < bottom) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').includes(id)) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        };
+
+        // Mobile Menu
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+    </script>
+</body>
+
+</html>
